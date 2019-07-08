@@ -30,12 +30,23 @@ def load_from_file(hierarchy_file: Path):
 
     hierarchy_yaml = yaml.safe_load(hierarchy_file.read_text())
 
+    _validate(hierarchy_yaml)
+
     hierarchy = []
     for repo_yaml in hierarchy_yaml:
-        if 'url' not in repo_yaml or 'path' not in repo_yaml:
-            raise ValueError('Invalid Hierarchy. Please check Hierarchy file!')
-
         repo_to_clone = RepoToClone(repo_yaml['url'], Path(repo_yaml['path']), repo_yaml.get('name'))
         hierarchy.append(repo_to_clone)
 
     return hierarchy
+
+
+def _validate(hierarchy_yaml):
+    def raise_error():
+        raise ValueError('Invalid Hierarchy. Please check Hierarchy file!')
+
+    if not hierarchy_yaml:
+        raise_error()
+
+    for repo_yaml in hierarchy_yaml:
+        if 'url' not in repo_yaml or 'path' not in repo_yaml:
+            raise_error()

@@ -20,6 +20,13 @@ class TestLoadHierarchy:
         with pytest.raises(ValueError, match=r'File .* does not exist!') as e:
             hierarchy.load_from_file(doesnt_exist)
 
+    def test_file_empty__raise(self, tmp_file):
+        tmp_file.write_text('''
+        ''')
+
+        with pytest.raises(ValueError, match='Invalid Hierarchy') as e:
+            hierarchy.load_from_file(tmp_file)
+
     def test_file_invalid__raise(self, tmp_file):
         tmp_file.write_text('''
         { 'this': is not yaml}
