@@ -26,6 +26,7 @@ setup(name='hierarchycloner',
       scripts=['bin/hierarchycloner'],
       install_requires=[
               'click',
+              'gitpython',
               'pyyaml'
       ],
       include_package_data=True)
