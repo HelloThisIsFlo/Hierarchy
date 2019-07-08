@@ -7,7 +7,7 @@ def readme():
 
 
 setup(name='hierarchycloner',
-      version='0.1.0',
+      version='0.1.1',
       description='Clone an entire hierarchy in one command',
       long_description=readme(),
       keywords='git batch',
