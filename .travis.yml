@@ -1,0 +1,24 @@
+language: python
+jobs:
+  include:
+
+    - stage: test
+      python: '3.6'
+      install: pip install tox-travis
+      script: tox
+    - stage: test
+      python: '3.7-dev'
+      install: pip install tox-travis
+      script: tox
+
+    - stage: deploy
+      script: skip
+      python:
+         - '3.7-dev'
+      deploy:
+        provider: pypi
+        user: FlorianKempenich
+        password:
+          secure: "PmmodYq/x0HTtBdPSnXlGaHX064TOz92DRPK3RZo7s1w50mwLGDr8+zvn7F0xJNwLk3iK1j5p5CJAbf7q71eb/c2uSuLw/v/VG/vTpZKyF57WyMj3WCTG/DRD6BTY71gB20Z+Llxhe3NAnEsPLi2B1KCaticsYfgLc9toxTIV/JbNWhXlWFKD3yiyxOov/4bSp/PdIbNUMb2Uh+/Vcpbl1r1wdXa4R9eCsBZv0pWSr0HeQBCw8n50URTctrk2Oh7Z5Md4NyFjUB5/Htlr/GDwFfEWrMx+Yk2sy+ywVaJsnQS4+mXhPKq/K+aB1XZy0aydZt5qdhR6r8iDM9pisyAOVxnHmtnbHL6PjQSNoSCNCl0gqzEgCgp/bHQ+7N3163CW7HTISSUJwBlk7zmWJ2pYqJ2as0azZVH2iFbDNdKtrgiuP1nqqy21uLKgpw1X6sgeV+zjIUJe3NtCiRp2WeeELeOlgs2qrXWdPXOr2UntTMztcihUWnNIsH6crGcHx0oBPFEU0GY23GV2S94US2/aE/tpOIx1rNOyaK0uDygw0GxVYvZkmyxPxYekW+DdYJRvmk2vr98NRr1qgnMUWOxJjRkah9e7IjaiGMz3ktoHbkmskzcop5alpfeyT2zsOde0sMZASnJCjSIeT30E2dRGCSSHQAJG5y2uYesMmXlquE="
+        # on:
+        #   tags: true
