@@ -11,10 +11,10 @@ from src.hierarchycloner.hierarchy import RepoToClone
 @mock.patch.object(Repo, 'clone_from')
 def test_clone_repo_with_gitpython(clone_from):
     hierarchy = [RepoToClone(url='git@github.com:FlorianKempenich/Hierarchy-Cloner.git',
-                             path=Path('/this/is/a/path'),
+                             root_path=Path('/this/is/a/path'),
                              name='hc'),
                  RepoToClone(url='git@github.com:FlorianKempenich/kata.git',
-                             path=Path('/some/other/path'),
+                             root_path=Path('/some/other/path'),
                              name='kata')]
 
     cloner.clone_all(hierarchy)
@@ -29,10 +29,10 @@ def test_clone_repo_with_gitpython(clone_from):
 @mock.patch('click.echo')
 def test_log_each_repo_cloned_via_click(click_echo, _clone_from):
     hierarchy = [RepoToClone(url='git@github.com:FlorianKempenich/Hierarchy-Cloner.git',
-                             path=Path('/this/is/a/path'),
+                             root_path=Path('/this/is/a/path'),
                              name='hc'),
                  RepoToClone(url='git@github.com:FlorianKempenich/kata.git',
-                             path=Path('/some/other/path'),
+                             root_path=Path('/some/other/path'),
                              name='kata')]
 
     cloner.clone_all(hierarchy)

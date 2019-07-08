@@ -8,22 +8,20 @@ class RepoToClone:
     path: Path
     name: str
 
-    def __init__(self, url: str, path: Path, name: str = None):
+    def __init__(self, url: str, root_path: Path, name: str = None):
         self.url = url
-        self.path = path
-        if name:
-            self.name = name
-        else:
-            self.name = self._extract_name_from_url()
+        if not name:
+            name = self._extract_name_from_url()
+        self.path = root_path / name
 
     def _extract_name_from_url(self):
         return self.url.split('/')[-1].replace('.git', '')
 
     def __repr__(self) -> str:
-        return f'<url: {self.url} | path: {self.path} | name: {self.name}>'
+        return f'<url: {self.url} | path: {self.path}>'
 
     def __eq__(self, other):
-        return self.url == other.url and self.path == other.path and self.name == other.name
+        return self.url == other.url and self.path == other.path
 
 
 def load_from_file(hierarchy_file: Path):

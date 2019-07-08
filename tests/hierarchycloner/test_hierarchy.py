@@ -52,10 +52,10 @@ class TestLoadHierarchy:
 
         assert repos == [
                 RepoToClone(url='git@github.com:FlorianKempenich/Hierarchy-Cloner.git',
-                            path=Path('/this/is/a/path'),
+                            root_path=Path('/this/is/a/path'),
                             name='hc'),
                 RepoToClone(url='git@github.com:FlorianKempenich/kata.git',
-                            path=Path('/some/other/path'),
+                            root_path=Path('/some/other/path'),
                             name='kata')]
 
     def test_no_explicit_name__extract_from_url(self, tmp_file):
@@ -66,4 +66,4 @@ class TestLoadHierarchy:
 
         repos = hierarchy.load_from_file(tmp_file)
 
-        assert repos[0].name == 'Hierarchy-Cloner'
+        assert repos[0].path == Path('/this/is/a/path/Hierarchy-Cloner')
