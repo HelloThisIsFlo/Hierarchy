@@ -3,8 +3,8 @@ from pathlib import Path
 import pytest
 from pytest import fixture
 
-from src.hierarchycloner import hierarchy
-from src.hierarchycloner.hierarchy import RepoToClone
+from hierarchycloner import hierarchy
+from hierarchycloner.hierarchy import RepoToClone
 
 
 @fixture
@@ -17,7 +17,7 @@ class TestLoadHierarchy:
         doesnt_exist = Path('/does/not/exist')
         assert not doesnt_exist.exists()
 
-        with pytest.raises(ValueError, match='File does not exist!') as e:
+        with pytest.raises(ValueError, match=r'File .* does not exist!') as e:
             hierarchy.load_from_file(doesnt_exist)
 
     def test_file_invalid__raise(self, tmp_file):

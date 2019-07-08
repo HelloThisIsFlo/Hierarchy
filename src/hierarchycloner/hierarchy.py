@@ -26,7 +26,7 @@ class RepoToClone:
 
 def load_from_file(hierarchy_file: Path):
     if not hierarchy_file.exists():
-        raise ValueError('File does not exist!')
+        raise ValueError(f'File {hierarchy_file} does not exist!')
 
     hierarchy_yaml = yaml.safe_load(hierarchy_file.read_text())
 

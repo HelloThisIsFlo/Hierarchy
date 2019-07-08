@@ -4,8 +4,8 @@ from unittest.mock import call
 
 from git import Repo
 
-from src.hierarchycloner import cloner
-from src.hierarchycloner.hierarchy import RepoToClone
+from hierarchycloner import cloner
+from hierarchycloner.hierarchy import RepoToClone
 
 
 @mock.patch.object(Repo, 'clone_from')

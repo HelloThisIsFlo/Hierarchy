@@ -3,6 +3,8 @@ from pathlib import Path
 
 import click
 
+from hierarchycloner.rename import clone_hierarchy
+
 HOME = Path(os.path.expanduser('~'))
 
 DEFAULT_HIERARCHY_FILE = HOME / '.hierarchy_cloner'
@@ -17,8 +19,10 @@ def main(hierarchy_file):
         hierarchy_file = DEFAULT_HIERARCHY_FILE
 
     click.echo('Running Hierarchy Cloner')
-    click.echo(click.format_filename(str(hierarchy_file)))
+    click.echo('------------------------')
+    click.echo('')
 
+    clone_hierarchy(hierarchy_file)
 
 
 if __name__ == '__main__':
