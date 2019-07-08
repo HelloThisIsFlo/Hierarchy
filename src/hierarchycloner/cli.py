@@ -20,5 +20,6 @@ def main(hierarchy_file):
     click.echo(click.format_filename(str(hierarchy_file)))
 
 
+
 if __name__ == '__main__':
     main()
