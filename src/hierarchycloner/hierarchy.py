@@ -31,7 +31,6 @@ def load_from_file(hierarchy_file: Path):
         raise ValueError('File does not exist!')
 
     hierarchy_yaml = yaml.safe_load(hierarchy_file.read_text())
-    print(hierarchy_yaml)
 
     hierarchy = []
     for repo_yaml in hierarchy_yaml:
