@@ -38,8 +38,9 @@ class TestLoadHierarchy:
 
     def test_file_invalid_2__raise(self, tmp_file):
         tmp_file.write_text('''
-        - path: '/this/is/a/path'
-          name: hc
+        repos:
+          - path: '/this/is/a/path'
+            name: hc
         ''')
 
         with pytest.raises(ValueError, match='Invalid Hierarchy') as e:
@@ -47,13 +48,14 @@ class TestLoadHierarchy:
 
     def test_valid_hierarchy(self, tmp_file: Path):
         tmp_file.write_text('''
-        - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
-          path: '/this/is/a/path'
-          name: hc
-          
-        - url: 'git@github.com:FlorianKempenich/kata.git'
-          path: '/some/other/path'
-          name: kata
+        repos:
+          - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
+            path: '/this/is/a/path'
+            name: hc
+            
+          - url: 'git@github.com:FlorianKempenich/kata.git'
+            path: '/some/other/path'
+            name: kata
         ''')
 
         repos = loader.load_from_file(tmp_file)
@@ -68,8 +70,9 @@ class TestLoadHierarchy:
 
     def test_no_explicit_name__extract_from_url(self, tmp_file):
         tmp_file.write_text('''
-        - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
-          path: '/this/is/a/path'
+        repos:
+          - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
+            path: '/this/is/a/path'
         ''')
 
         repos = loader.load_from_file(tmp_file)
@@ -79,8 +82,9 @@ class TestLoadHierarchy:
     @patch('os.path.expanduser')
     def test_expand_home_in_path(self, expanduser, tmp_file):
         tmp_file.write_text('''
-        - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
-          path: '~/this/is/a/path/with/home/symbol'
+        repos:
+          - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
+            path: '~/this/is/a/path/with/home/symbol'
         ''')
         expanduser.return_value = 'EXPECTED_PATH'
 

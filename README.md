@@ -21,12 +21,19 @@ $ hierarchy
 
    > _Sample Hierarchy File_
    > ```yaml
-   > - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
-   >   path: '~/Dev/Tools'
-   >   
-   > - url: 'git@github.com:FlorianKempenich/kata.git'
-   >   path: '/Some/Other/Location'
-   >   name: kata-cli
+   > repos:
+   >   - path: ~/Dev/CliTools
+   >     url: git@github.com:FlorianKempenich/Hierarchy.git
+   >     
+   >   - path: ~/Dev/CliTools
+   >     url: git@github.com:FlorianKempenich/kata.git
+   >     
+   >   - path: ~/Dev/CliTools/DevOps
+   >     url: git@github.com:FlorianKempenich/ansible-droplet.git
+   >     
+   >   - path: ~/Dev/HomeAutomation
+   >     url: git@github.com:FlorianKempenich/Appdaemon-Test-Framework.git
+   >     name: appdaemontestframework
    > ```
 
 3. **Run _Hierarchy_**
@@ -36,9 +43,18 @@ $ hierarchy
 
 ## _Hierarchy_ file structure
 
-The _Hierarchy_ file represent the flat hierarchy of all the git repository to clone and automatically maintain. 
+The _Hierarchy_ file represent the flat hierarchy of all the git repository to clone and maintain. 
 
-It consists of a list of entries, each representing a repository to clone.  Each repository has the following structure:
+It consists of a list of entries, under the key `repos`, each representing a repository to clone.
+```yaml
+repos:
+  - REPO_TO_CLONE_1
+ 
+  - REPO_TO_CLONE_2
+  
+  - REPO_TO_CLONE_3
+```
+Each repository has the following structure:
 ```yaml
 url: "URL of the project. The same used to clone the repository with `git clone`"
 path: "The local path where to clone the repository. It can contain `~` to represent HOME"
@@ -51,12 +67,19 @@ If no `name` is provided, the repository name will be used.
 
 A sample _Hierarchy_ file might look like this:
 ```yaml
-- url: 'git@github.com:FlorianKempenich/Hierarchy.git'
-  path: '~/Dev/Tools'
-  
-- url: 'git@github.com:FlorianKempenich/kata.git'
-  path: '/Some/Other/Location'
-  name: kata-cli
+repos:
+  - path: ~/Dev/CliTools
+    url: git@github.com:FlorianKempenich/Hierarchy.git
+    
+  - path: ~/Dev/CliTools
+    url: git@github.com:FlorianKempenich/kata.git
+    
+  - path: ~/Dev/CliTools/DevOps
+    url: git@github.com:FlorianKempenich/ansible-droplet.git
+    
+  - path: ~/Dev/HomeAutomation
+    url: git@github.com:FlorianKempenich/Appdaemon-Test-Framework.git
+    name: appdaemontestframework
 ```
 
 ## Options
