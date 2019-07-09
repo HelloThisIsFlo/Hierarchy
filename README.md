@@ -64,6 +64,12 @@ A sample _Hierarchy_ file might look like this:
 * ### `-f` / `--file HIERARCHY_FILE`
   A hierarchy file to use.  
   _Default:_ `~/.hierarchy`
+  
+* ### `-v` / `--verbose`
+  Enable verbose mode
+  
+* ### `--help`
+  Show help
 
 
 
