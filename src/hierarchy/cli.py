@@ -4,6 +4,7 @@ from pathlib import Path
 import click
 
 from hierarchy.rename import clone_hierarchy
+from hierarchy.utils import display
 
 HOME = Path(os.path.expanduser('~'))
 
@@ -18,9 +19,9 @@ def main(hierarchy_file):
     else:
         hierarchy_file = DEFAULT_HIERARCHY_FILE
 
-    click.echo('Running Hierarchy')
-    click.echo('-----------------')
-    click.echo('')
+    display('Running Hierarchy')
+    display('-----------------')
+    display('')
 
     clone_hierarchy(hierarchy_file)
 
