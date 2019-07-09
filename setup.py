@@ -6,9 +6,9 @@ def readme():
         return f.read()
 
 
-setup(name='hierarchycloner',
-      version='0.1.1',
-      description='Clone an entire hierarchy in one command',
+setup(name='hierarchy',
+      version='0.1.2',
+      description='Clone and Maintain an entire hierarchy of Git repositories in one command',
       long_description=readme(),
       keywords='git batch',
       classifiers=[
@@ -17,13 +17,13 @@ setup(name='hierarchycloner',
               'License :: OSI Approved :: MIT License',
               'Topic :: Utilities'
       ],
-      url='https://github.com/FlorianKempenich/Hierarchy-Cloner',
+      url='https://github.com/FlorianKempenich/Hierarchy',
       author='Florian Kempenich',
       author_email='Flori@nKempenich.com',
       packages=find_packages(where="src"),
       package_dir={"": "src"},
       license='MIT',
-      scripts=['bin/hierarchycloner'],
+      scripts=['bin/hierarchy'],
       install_requires=[
               'click',
               'gitpython',

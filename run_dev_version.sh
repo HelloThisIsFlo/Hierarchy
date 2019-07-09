@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pipenv run python ./src/hierarchycloner/cli.py $@
+pipenv run python ./src/hierarchy/cli.py $@

@@ -3,8 +3,8 @@ from pathlib import Path
 import pytest
 from pytest import fixture
 
-from hierarchycloner import hierarchy
-from hierarchycloner.hierarchy import RepoToClone
+from hierarchy import hierarchy
+from hierarchy.hierarchy import RepoToClone
 
 
 @fixture
@@ -46,7 +46,7 @@ class TestLoadHierarchy:
 
     def test_valid_hierarchy(self, tmp_file: Path):
         tmp_file.write_text('''
-        - url: 'git@github.com:FlorianKempenich/Hierarchy-Cloner.git'
+        - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
           path: '/this/is/a/path'
           name: hc
           
@@ -58,7 +58,7 @@ class TestLoadHierarchy:
         repos = hierarchy.load_from_file(tmp_file)
 
         assert repos == [
-                RepoToClone(url='git@github.com:FlorianKempenich/Hierarchy-Cloner.git',
+                RepoToClone(url='git@github.com:FlorianKempenich/Hierarchy.git',
                             root_path=Path('/this/is/a/path'),
                             name='hc'),
                 RepoToClone(url='git@github.com:FlorianKempenich/kata.git',
@@ -67,10 +67,10 @@ class TestLoadHierarchy:
 
     def test_no_explicit_name__extract_from_url(self, tmp_file):
         tmp_file.write_text('''
-        - url: 'git@github.com:FlorianKempenich/Hierarchy-Cloner.git'
+        - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
           path: '/this/is/a/path'
         ''')
 
         repos = hierarchy.load_from_file(tmp_file)
 
-        assert repos[0].path == Path('/this/is/a/path/Hierarchy-Cloner')
+        assert repos[0].path == Path('/this/is/a/path/Hierarchy')

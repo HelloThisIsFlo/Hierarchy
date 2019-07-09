@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pip uninstall -y hierarchycloner && python setup.py install
+pip uninstall -y hierarchy && python setup.py install

@@ -1,7 +1,7 @@
 import click
 import git
 
-from hierarchycloner.hierarchy import RepoToClone
+from hierarchy.hierarchy import RepoToClone
 
 
 def clone_all(repo_hierarchy: [RepoToClone]):
