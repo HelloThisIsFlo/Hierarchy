@@ -7,7 +7,7 @@ def readme():
 
 
 setup(name='hierarchy',
-      version='0.3.1',
+      version='0.4.0',
       description='Clone and Maintain an entire hierarchy of Git repositories in one command',
       long_description=readme(),
       long_description_content_type="text/markdown",
