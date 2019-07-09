@@ -3,8 +3,8 @@ from pathlib import Path
 import pytest
 from pytest import fixture
 
-from hierarchy import hierarchy
-from hierarchy.hierarchy import RepoToClone
+from hierarchy import loader
+from hierarchy.loader import RepoToClone
 
 
 @fixture
@@ -18,14 +18,14 @@ class TestLoadHierarchy:
         assert not doesnt_exist.exists()
 
         with pytest.raises(ValueError, match=r'File .* does not exist!') as e:
-            hierarchy.load_from_file(doesnt_exist)
+            loader.load_from_file(doesnt_exist)
 
     def test_file_empty__raise(self, tmp_file):
         tmp_file.write_text('''
         ''')
 
         with pytest.raises(ValueError, match='Invalid Hierarchy') as e:
-            hierarchy.load_from_file(tmp_file)
+            loader.load_from_file(tmp_file)
 
     def test_file_invalid__raise(self, tmp_file):
         tmp_file.write_text('''
@@ -33,7 +33,7 @@ class TestLoadHierarchy:
         ''')
 
         with pytest.raises(ValueError, match='Invalid Hierarchy') as e:
-            hierarchy.load_from_file(tmp_file)
+            loader.load_from_file(tmp_file)
 
     def test_file_invalid_2__raise(self, tmp_file):
         tmp_file.write_text('''
@@ -42,7 +42,7 @@ class TestLoadHierarchy:
         ''')
 
         with pytest.raises(ValueError, match='Invalid Hierarchy') as e:
-            hierarchy.load_from_file(tmp_file)
+            loader.load_from_file(tmp_file)
 
     def test_valid_hierarchy(self, tmp_file: Path):
         tmp_file.write_text('''
@@ -55,7 +55,7 @@ class TestLoadHierarchy:
           name: kata
         ''')
 
-        repos = hierarchy.load_from_file(tmp_file)
+        repos = loader.load_from_file(tmp_file)
 
         assert repos == [
                 RepoToClone(url='git@github.com:FlorianKempenich/Hierarchy.git',
@@ -71,6 +71,6 @@ class TestLoadHierarchy:
           path: '/this/is/a/path'
         ''')
 
-        repos = hierarchy.load_from_file(tmp_file)
+        repos = loader.load_from_file(tmp_file)
 
         assert repos[0].path == Path('/this/is/a/path/Hierarchy')

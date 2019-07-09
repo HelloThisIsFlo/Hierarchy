@@ -3,7 +3,7 @@ from pathlib import Path
 
 import click
 
-from hierarchy.rename import clone_hierarchy
+from hierarchy import clone_hierarchy
 from hierarchy.utils import display
 
 HOME = Path(os.path.expanduser('~'))

@@ -1,6 +1,6 @@
 import git
 
-from hierarchy.hierarchy import RepoToClone
+from hierarchy.loader import RepoToClone
 from hierarchy.utils import display
 
 
