@@ -66,3 +66,20 @@ A sample _Hierarchy_ file might look like this:
   _Default:_ `~/.hierarchy`
 
 
+
+---
+## Work In Progress
+
+- [x] Allow for `~` in the `path`
+- [x] Create directories if do not exist
+- [ ] Clone with all submodules
+- [ ] If directory exists and not empty:
+    - [ ] Is not same repo => Skip and notify user (ERROR)
+    - [ ] Is not repo => Skip and notify user (ERROR)
+    - [ ] Is correct repo:
+        - [ ] Has no local modifications =>
+            - [ ] Update (pull)
+            - [ ] Update with all submodules
+        - [ ] Has local modifications => Skip and notify user (WARN)
+
+
