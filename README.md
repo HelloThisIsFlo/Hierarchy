@@ -83,9 +83,10 @@ A sample _Hierarchy_ file might look like this:
     - [ ] Is not same repo => Skip and notify user (ERROR)
     - [ ] Is not repo => Skip and notify user (ERROR)
     - [ ] Is correct repo:
-        - [ ] Has no local modifications =>
+        - [ ] Has no local modifications and up to date with remote =>
             - [ ] Update (pull)
             - [ ] Update with all submodules
         - [ ] Has local modifications => Skip and notify user (WARN)
+        - [ ] Is not up to date with remote => Skip and notify user (WARN)
 
 
