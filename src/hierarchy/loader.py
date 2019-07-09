@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 import yaml
@@ -34,7 +35,8 @@ def load_from_file(hierarchy_file: Path):
 
     hierarchy = []
     for repo_yaml in hierarchy_yaml:
-        repo_to_clone = RepoToClone(repo_yaml['url'], Path(repo_yaml['path']), repo_yaml.get('name'))
+        path = Path(os.path.expanduser(repo_yaml['path']))
+        repo_to_clone = RepoToClone(repo_yaml['url'], path, repo_yaml.get('name'))
         hierarchy.append(repo_to_clone)
 
     return hierarchy

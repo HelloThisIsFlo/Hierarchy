@@ -1,4 +1,5 @@
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
 from pytest import fixture
@@ -74,3 +75,16 @@ class TestLoadHierarchy:
         repos = loader.load_from_file(tmp_file)
 
         assert repos[0].path == Path('/this/is/a/path/Hierarchy')
+
+    @patch('os.path.expanduser')
+    def test_expand_home_in_path(self, expanduser, tmp_file):
+        tmp_file.write_text('''
+        - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
+          path: '~/this/is/a/path/with/home/symbol'
+        ''')
+        expanduser.return_value = 'EXPECTED_PATH'
+
+        repos = loader.load_from_file(tmp_file)
+
+        expanduser.assert_called_with('~/this/is/a/path/with/home/symbol')
+        assert repos[0].path == Path('EXPECTED_PATH/Hierarchy')
