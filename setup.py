@@ -10,6 +10,7 @@ setup(name='hierarchy',
       version='0.2.0',
       description='Clone and Maintain an entire hierarchy of Git repositories in one command',
       long_description=readme(),
+      long_description_content_type="text/markdown",
       keywords='git batch',
       classifiers=[
               'Environment :: Console',
