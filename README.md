@@ -40,10 +40,15 @@ $ hierarchy
    ```bash
    $ hierarchy
    ```
+   * _Hierarchy_ will clone all the repositories at the specified location
+   * If a repo already exists at the specified location,  _Hierarchy_ will pull  
+     the latest changes (WIP)
+   * If a repo contains local modifications or has some un-pushed commits,  
+     the repo will be skipped and a warning will be emitted (WIP)
 
 ## _Hierarchy_ file structure
 
-The _Hierarchy_ file represent the flat hierarchy of all the git repository to clone and maintain. 
+The _Hierarchy_ file represents the flattened hierarchy of all the git repository to clone and maintain. 
 
 It consists of a list of entries, under the key `repos`, each representing a repository to clone.
 ```yaml
