@@ -116,5 +116,3 @@ repos:
             - [ ] Update with all submodules
         - [ ] Has local modifications => Skip and notify user (WARN)
         - [ ] Is not up to date with remote => Skip and notify user (WARN)
-
-
