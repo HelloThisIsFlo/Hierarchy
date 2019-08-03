@@ -52,7 +52,7 @@ class TestLoadHierarchy:
           - url: 'git@github.com:FlorianKempenich/Hierarchy.git'
             path: '/this/is/a/path'
             name: hc
-            
+
           - url: 'git@github.com:FlorianKempenich/kata.git'
             path: '/some/other/path'
             name: kata
